@@ -7,8 +7,16 @@ const getAllProducts = async (): Promise<ITypeMessage> => {
   return { type: 'SUCESS', message: products };
 };
 
+const createProduct = async (name: string, amount: string): Promise<ITypeMessage> => {
+  const idCreated = await productsModel.createProduct(name, amount);
+  const getProduct = await productsModel.getAllProductById(idCreated);
+  
+  return { type: 'CREATED', message: getProduct };
+};
+
 const productsService = {
   getAllProducts,
+  createProduct,
 };
 
 export default productsService;

@@ -1,15 +1,16 @@
 export interface IProduct {
-  id: number,
+  id?: number,
   name: string,
   amount: string,
-  orderId: number | null,
+  orderId?: number | null,
 }
 
 export interface ITypeMessage {
   type: string,
-  message: IProduct[]
+  message: IProduct[] | IProduct
 }
 
 export interface ITypes {
-  [SUCESS : string]: number
+  [SUCESS : string]: number,
+  CREATED: number
 }
