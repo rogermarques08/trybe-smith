@@ -7,8 +7,8 @@ const config: SignOptions = {
   expiresIn: '1d',
 };
 
-export const createToken = (data: number) => jwt.sign(
-  { data },
+export const createToken = (username: string, password: string) => jwt.sign(
+  { username, password },
   secret,
   config,
 );

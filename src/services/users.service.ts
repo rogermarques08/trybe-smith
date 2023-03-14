@@ -5,14 +5,14 @@ import usersModel from '../models/users.model';
 const createUser = async (user: IUser) => {
   const { username, vocation, level, password } = user;
   
-  const idCreated = await usersModel.createUser(
+  await usersModel.createUser(
     username,
     vocation,
     level,
     password,
   );
   
-  const token = getToken(idCreated);
+  const token = getToken(username, password);
 
   return { type: 'CREATED', message: token };
 };
