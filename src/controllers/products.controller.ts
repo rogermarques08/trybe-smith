@@ -13,7 +13,9 @@ const createProduct = async (req: Request, res: Response) => {
 
   const { type, message } = await productsService.createProduct(name, amount);
 
-  return res.status(mapTypes(type)).json(message);
+  if (type === 'CREATED') return res.status(mapTypes(type)).json(message);
+
+  return res.status(mapTypes(type)).json({ message });
 };
 
 const productsController = {

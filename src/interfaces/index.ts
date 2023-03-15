@@ -6,15 +6,17 @@ export interface IProduct {
 }
 
 export interface ITypeMessage {
-  type: string,
+  type: string 
   message: IProduct[] | IProduct | string
 }
 
 export interface ITypes {
   [SUCESS : string]: number,
   CREATED: number,
-  INCORRECT_FIELDS: number
-  FIELDS_MISSING: number
+  INCORRECT_FIELDS: number,
+  FIELDS_MISSING: number,
+  INCORRECT_TYPE: number,
+
 }
 
 export interface IUser {
