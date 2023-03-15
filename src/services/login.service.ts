@@ -1,10 +1,10 @@
 import getToken from '../auth/auth';
 import { ITypeMessage } from '../interfaces';
 import usersModel from '../models/users.model';
-import { validateUser } from './validations/validateInputValues';
+import { validateLogin } from './validations/validateInputValues';
 
 const login = async (username: string, password: string): Promise<ITypeMessage> => {
-  const validate = validateUser({ username, password });
+  const validate = validateLogin({ username, password });
 
   if (validate.type !== 'null') return validate;
   

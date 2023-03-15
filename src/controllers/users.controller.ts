@@ -7,7 +7,9 @@ const createUser = async (req: Request, res: Response) => {
 
   const { type, message } = await usersService.createUser(user);
 
-  return res.status(mapTypes(type)).json({ token: message });
+  if (type === 'CREATED') return res.status(mapTypes(type)).json({ token: message });
+
+  return res.status(mapTypes(type)).json({ message });
 };
 
 const usersController = {

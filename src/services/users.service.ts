@@ -1,9 +1,13 @@
 import getToken from '../auth/auth';
-import { IUser } from '../interfaces';
+import { ITypeMessage, IUser } from '../interfaces';
 import usersModel from '../models/users.model';
+import { validateUser } from './validations/validateInputValues';
 
-const createUser = async (user: IUser) => {
+const createUser = async (user: IUser): Promise<ITypeMessage> => {
   const { username, vocation, level, password } = user;
+
+  const validate = validateUser(user);
+  if (validate.type !== 'null') return validate;
   
   await usersModel.createUser(
     username,
