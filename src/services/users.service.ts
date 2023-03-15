@@ -1,4 +1,4 @@
-import getToken from '../auth/auth';
+import { createToken } from '../auth/auth';
 import { ITypeMessage, IUser } from '../interfaces';
 import usersModel from '../models/users.model';
 import { validateUser } from './validations/validateInputValues';
@@ -16,7 +16,7 @@ const createUser = async (user: IUser): Promise<ITypeMessage> => {
     password,
   );
   
-  const token = getToken(username, password);
+  const token = createToken(username, password);
 
   return { type: 'CREATED', message: token };
 };

@@ -28,10 +28,20 @@ const createProduct = async (name: string, amount: string) => {
   return insertId;
 };
 
+const updateOrderProduct = async (orderId: number, productId: number) => {
+  const [rows] = await connection.execute(
+    'UPDATE Trybesmith.products SET order_id = ? WHERE id = ?',
+    [orderId, productId],
+  );
+
+  return rows;
+};
+
 const productsModel = {
   getAllProducts,
   createProduct,
   getAllProductById,
+  updateOrderProduct,
 };
 
 export default productsModel;

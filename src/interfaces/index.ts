@@ -6,6 +6,7 @@ export interface IProduct {
 }
 
 export interface IUser {
+  id: number
   username: string;
   vocation: string;
   level: number;
@@ -25,7 +26,7 @@ export interface IOrder {
 
 export interface ITypeMessage {
   type: string;
-  message: IProduct[] | IProduct | IOrder[] | string;
+  message: IProduct[] | IProduct | IOrder[] | IOrder | string;
 }
 
 export interface ITypes {
@@ -34,4 +35,6 @@ export interface ITypes {
   INCORRECT_FIELDS: number;
   FIELDS_MISSING: number;
   INCORRECT_TYPE: number;
+  TOKEN_NOT_FOUND: number;
+  INVALID_TOKEN: number;
 }

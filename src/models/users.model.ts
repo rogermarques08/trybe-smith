@@ -25,9 +25,19 @@ const getUserByLogin = async (username: string, password: string): Promise<IUser
   return user;
 };
 
+const getUserById = async (id: number): Promise<IUser> => {
+  const [[user]] = await connection.execute<RowDataPacket[] & IUser[]>(
+    'SELECT * FROM Trybesmith.users WHERE id = ?',
+    [id],
+  );
+
+  return user;
+};
+
 const usersModel = {
   createUser,
   getUserByLogin,
+  getUserById,
 };
 
 export default usersModel;

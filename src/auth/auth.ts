@@ -13,4 +13,4 @@ export const createToken = (username: string, password: string) => jwt.sign(
   config,
 );
 
-export default createToken;
+export const validateToken = (token: string) => jwt.verify(token, secret);

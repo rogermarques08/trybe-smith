@@ -1,5 +1,5 @@
 import { ILogin, IProduct, ITypeMessage, IUser } from '../../interfaces';
-import { loginSchema, productSchema, userSchema } from './schema';
+import { loginSchema, orderSchema, productSchema, userSchema } from './schema';
 
 export const validateLogin = ({ username, password }: ILogin): ITypeMessage => {
   const { error } = loginSchema.validate({ username, password });
@@ -23,6 +23,18 @@ export const validateProduct = ({ name, amount }: IProduct): ITypeMessage => {
 
 export const validateUser = (user: IUser): ITypeMessage => {
   const { error } = userSchema.validate(user);
+
+  if (error) {
+    return { 
+      type: error.message.includes('required') ? 'FIELDS_MISSING' : 'INCORRECT_TYPE', 
+      message: error.message };
+  }
+
+  return { type: 'null', message: '' };
+};
+
+export const validateOrders = (order: object): ITypeMessage => {
+  const { error } = orderSchema.validate(order);
 
   if (error) {
     return { 
