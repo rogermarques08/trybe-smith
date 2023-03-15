@@ -25,5 +25,5 @@ export const orderSchema = Joi.object({
     .messages({
       'array.min': '"productsIds" must include only numbers',
     }),
-  // https://joi.dev/api/?v=17.8.3
+  // https://joi.dev/api/?v=17.8.3.
 });
